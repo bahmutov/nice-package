@@ -10,6 +10,7 @@
       "pre-commit": [
         "npm prune",
         "npm run deps",
+        "npm run build",
         "npm test",
         "git add src/*.js",
         "npm run ban"
