@@ -1,26 +1,30 @@
-const check = require('check-more-types')
+'use strict'
 
-function initValidators () {
-  const is = function (type, name, value) {
-    if (!check[type](value)) {
-      console.error('expected', name, 'to be', type, 'not', value)
+const isString = (x:any) => typeof x === 'string'
+
+const isObject = (x:any) => typeof x === 'object' && !Array.isArray(x)
+
+export function initValidators (onError = console.error) {
+  const isNamedString = (name: string) => (value:any) => {
+    if (!isString(value)) {
+      onError('expected', name, 'to be a string, not', value)
       return false
     }
     return true
   }
 
   const validators = {
-    name: is.bind(null, 'string', 'name'),
-    version: is.bind(null, 'string', 'version'),
-    description: is.bind(null, 'string', 'description'),
+    name: isNamedString('name'),
+    version: isNamedString('version'),
+    description: isNamedString('description'),
 
-    engines: function (value) {
-      if (typeof value !== 'object') {
-        console.error('need an object for engines property')
+    engines: function (value: any) {
+      if (isObject(value)) {
+        onError('need an object for engines property')
         return false
       }
-      if (!check.string(value.node)) {
-        console.error(
+      if (!isNamedString('engines.node')(value.node)) {
+        onError(
           'engines object missing node record, has ' +
             JSON.stringify(value, null, 2)
         )
@@ -29,41 +33,41 @@ function initValidators () {
       return true
     },
 
-    keywords: function (values) {
-      if (!check.array(values)) {
-        console.error('expected keywords to be an Array')
+    keywords: function (values:any[]) {
+      if (!Array.isArray(values)) {
+        onError('expected keywords to be an Array')
         return false
       }
 
       return values.every(function (keyword) {
-        if (!check.string(keyword)) {
-          console.error('every keyword should be a string, found', keyword)
+        if (isString(keyword)) {
+          onError('every keyword should be a string, found', keyword)
           return false
         }
         return true
       })
     },
-    author: function (value) {
-      if (!check.object(value) && !check.string(value)) {
-        console.error('invalid author value', value)
+    author: function (value: any) {
+      if (!isObject(value) && !isString(value)) {
+        onError('invalid author value', value)
         return false
       }
       return true
     },
-    repository: function (value) {
-      if (!check.object(value)) {
-        console.error('expected repository to be an object, not', value)
+    repository: function (value:any) {
+      if (!isObject(value)) {
+        onError('expected repository to be an object, not', value)
         return false
       }
-      if (!check.string(value.type)) {
-        console.error(
+      if (!isString(value.type)) {
+        onError(
           'expected repository type to be a string, not',
           value.type
         )
         return false
       }
-      if (!check.string(value.url)) {
-        console.error('expected repository url to be a string, not', value.url)
+      if (!isString(value.url)) {
+        onError('expected repository url to be a string, not', value.url)
         return false
       }
       return true
@@ -71,5 +75,3 @@ function initValidators () {
   }
   return validators
 }
-
-module.exports = initValidators
