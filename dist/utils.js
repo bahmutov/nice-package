@@ -7,8 +7,15 @@ var check_more_types_1 = __importDefault(require("check-more-types"));
 var lazy_ass_1 = __importDefault(require("lazy-ass"));
 var debug_1 = __importDefault(require("debug"));
 var debug = debug_1.default('@bahmutov/nice-package');
+/**
+ * Converts a given function into a unary function.
+ *
+ * @export
+ * @param {Function} fn
+ * @returns Function that only accepts single argument and calls original function
+ */
 function unary(fn) {
-    lazy_ass_1.default(check_more_types_1.default.fn(fn), 'unary expects a function');
+    lazy_ass_1.default(check_more_types_1.default.fn(fn), 'unary expects a function', fn);
     return function (first) {
         return fn(first);
     };

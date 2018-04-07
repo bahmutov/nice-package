@@ -40,7 +40,8 @@
     "validator"
   ],
   "license": "MIT",
-  "main": "src/",
+  "main": "dist",
+  "module": "src",
   "private": false,
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
