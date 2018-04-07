@@ -9,7 +9,7 @@ function initValidators () {
     return true
   }
 
-  var validators = {
+  const validators = {
     name: is.bind(null, 'string', 'name'),
     version: is.bind(null, 'string', 'version'),
     description: is.bind(null, 'string', 'description'),

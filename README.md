@@ -19,6 +19,10 @@ npm install --save @bahmutov/nice-package
 
 ## Use
 
+## Debug
+
+Run with environment variable `DEBUG=@bahmutov/nice-package` to see debug messages
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2018
