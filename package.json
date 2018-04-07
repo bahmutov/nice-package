@@ -29,8 +29,8 @@
     "node": ">=6"
   },
   "files": [
-    "src/*.js",
-    "!src/*-spec.js"
+    "dist/*.js",
+    "!dist/*-spec.js"
   ],
   "homepage": "https://github.com/bahmutov/nice-package#readme",
   "keywords": [
@@ -72,12 +72,15 @@
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
-    "unit": "mocha src/*-spec.js",
+    "unit": "mocha -r ts-node/register src/**/*-spec.ts",
     "unused-deps": "dependency-check --unused --no-dev .",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "build": "tsc"
   },
   "devDependencies": {
+    "@types/debug": "0.0.30",
+    "@types/mocha": "5.0.0",
     "@types/node": "9.6.2",
     "ban-sensitive-files": "1.9.2",
     "dependency-check": "3.1.0",
@@ -91,6 +94,7 @@
     "semantic-release": "^15.1.5",
     "standard": "11.0.1",
     "travis-deploy-once": "^4.4.1",
+    "ts-node": "5.0.1",
     "typescript": "2.8.1"
   },
   "dependencies": {

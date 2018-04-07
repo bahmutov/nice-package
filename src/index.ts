@@ -1,17 +1,19 @@
 'use strict'
 
-const debug = require('debug')('@bahmutov/nice-package')
-var PJV = require('package-json-validator').PJV
-var check = require('check-more-types')
+import Debug from 'debug'
+const debug = Debug('@bahmutov/nice-package')
+
+const PJV = require('package-json-validator').PJV
+const check = require('check-more-types')
 const la = require('lazy-ass')
-var fs = require('fs')
-var join = require('path').join
-var unary = require('./utils').unary
-var find = require('./utils').find
-var initValidators = require('./validators')
-var save = fs.writeFileSync
-var load = fs.readFileSync
-var glob = require('glob')
+const fs = require('fs')
+const join = require('path').join
+const unary = require('./utils').unary
+const find = require('./utils').find
+const initValidators = require('./validators')
+const save = fs.writeFileSync
+const load = fs.readFileSync
+const glob = require('glob')
 
 var taskName = 'nice-package'
 var taskDescription = 'Opinionated package.json validator'
@@ -105,27 +107,6 @@ function sortPackageProperties (grunt, done, options, valid) {
       done(valid)
     }
   })
-}
-
-function checkProperties (options, pkg) {
-  const every = Object.keys(options).every(function (key) {
-    debug('checking property %s', key)
-
-    var property = pkg[key]
-    if (!property) {
-      console.error('package.json missing', key)
-      return false
-    }
-    if (is.fn(options[key])) {
-      if (!options[key](property)) {
-        console.error('failed check for property', key)
-        return false
-      }
-    }
-
-    return true
-  })
-  return every
 }
 
 function isValidLicense (pkg) {
