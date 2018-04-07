@@ -1,12 +1,13 @@
 'use strict'
 
-const isString = (x:any) => typeof x === 'string'
+const isString = (x: any) => typeof x === 'string'
 
-const isObject = (x:any) => typeof x === 'object' && !Array.isArray(x)
+const isObject = (x: any) => typeof x === 'object' && !Array.isArray(x)
 
-export function initValidators (onError = console.error) {
-  const isNamedString = (name: string) => (value:any) => {
+export function initValidators (onError: Function = console.error) {
+  const isNamedString = (name: string) => (value: any) => {
     if (!isString(value)) {
+      console.log('calling onError', onError)
       onError('expected', name, 'to be a string, not', value)
       return false
     }
@@ -19,7 +20,7 @@ export function initValidators (onError = console.error) {
     description: isNamedString('description'),
 
     engines: function (value: any) {
-      if (isObject(value)) {
+      if (!isObject(value)) {
         onError('need an object for engines property')
         return false
       }
@@ -33,14 +34,14 @@ export function initValidators (onError = console.error) {
       return true
     },
 
-    keywords: function (values:any[]) {
+    keywords: function (values: any[]) {
       if (!Array.isArray(values)) {
         onError('expected keywords to be an Array')
         return false
       }
 
       return values.every(function (keyword) {
-        if (isString(keyword)) {
+        if (!isString(keyword)) {
           onError('every keyword should be a string, found', keyword)
           return false
         }
@@ -54,16 +55,13 @@ export function initValidators (onError = console.error) {
       }
       return true
     },
-    repository: function (value:any) {
+    repository: function (value: any) {
       if (!isObject(value)) {
         onError('expected repository to be an object, not', value)
         return false
       }
       if (!isString(value.type)) {
-        onError(
-          'expected repository type to be a string, not',
-          value.type
-        )
+        onError('expected repository type to be a string, not', value.type)
         return false
       }
       if (!isString(value.url)) {

@@ -8,18 +8,18 @@ const debug = Debug('@bahmutov/nice-package')
  * Converts a given function into a unary function.
  *
  * @export
- * @param {Function} fn
+{Function} fn
  * @returns Function that only accepts single argument and calls original function
  */
-export function unary (fn:Function) {
+export function unary (fn: Function) {
   la(is.fn(fn), 'unary expects a function', fn)
 
-  return function (first:any) {
+  return function (first: any) {
     return fn(first)
   }
 }
 
-export function find (array:any[], cb:Function) {
+export function find (array: any[], cb: Function) {
   la(Array.isArray(array), 'expected array')
   la(is.fn(cb), 'expected callback')
 
@@ -42,18 +42,22 @@ export type Package = {
   [key: string]: any
 }
 
-export function checkProperties (options: OptionsToCheck, pkg: Package) {
+export function checkProperties (
+  options: OptionsToCheck,
+  pkg: Package,
+  onError: Function = console.error
+) {
   const every = Object.keys(options).every(function (key) {
     debug('checking property %s', key)
 
     var property = pkg[key]
     if (!property) {
-      console.error('package.json missing', key)
+      onError('package.json is missing', key)
       return false
     }
     if (is.fn(options[key])) {
       if (!options[key](property)) {
-        console.error('failed check for property', key)
+        onError('failed check for property', key)
         return false
       }
     }
