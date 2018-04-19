@@ -4,7 +4,7 @@ import Debug from 'debug'
 
 const debug = Debug('@bahmutov/nice-package')
 
-// TODO use Ramda functions
+// TODO use Ramda functions id:2 gh:12 ic:gh
 
 /**
  * Converts a given function into a unary function.
