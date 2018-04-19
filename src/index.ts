@@ -19,6 +19,8 @@ const glob = require('glob')
 var taskName = 'nice-package'
 var taskDescription = 'Opinionated package.json validator'
 
+// TODO check if repository in package matches git remote origin +enhancement
+
 function warnOnLooseVersion (grunt, name, version) {
   la(check.unemptyString(name), 'missing name', name)
   la(check.unemptyString(version), 'missing version for', name)
