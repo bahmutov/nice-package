@@ -42,6 +42,7 @@ export type Package = {
   [key: string]: any
 }
 
+// TODO: document this function
 export function checkProperties (
   options: OptionsToCheck,
   pkg: Package,

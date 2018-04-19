@@ -19,8 +19,8 @@ var taskName = 'nice-package'
 var taskDescription = 'Opinionated package.json validator'
 
 function warnOnLooseVersion (grunt, name, version) {
-  verify.unemptyString(name, 'missing name')
-  verify.unemptyString(version, 'missing version for', name)
+  la(check.unemptyString(name), 'missing name', name)
+  la(check.unemptyString(version), 'missing version for', name)
 
   if (/\*|\^|\~/.test(version)) {
     grunt.log.warn('loose version', version, 'for dependency', name)
@@ -28,7 +28,7 @@ function warnOnLooseVersion (grunt, name, version) {
 }
 
 function tightenVersion (version) {
-  verify.unemptyString(version, 'expected version string, got ' + version)
+  la(check.unemptyString(version), 'expected version string, got', version)
   return version.replace('^', '').replace('~', '')
 }
 
@@ -150,7 +150,7 @@ function checkLicenseAndReadm (grunt) {
 function makePackageNicer (grunt, validators, done, options) {
   validators = validators || {}
   options = options || {}
-  verify.fn(done, 'expected done to be a function')
+  la(check.fn(done), 'expected done to be a function')
 
   var pkg = grunt.file.readJSON('package.json')
   var every = checkProperties(validators, grunt, pkg)
