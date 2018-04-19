@@ -42,7 +42,7 @@ export type Package = {
   [key: string]: any
 }
 
-// TODO: document this function
+// TODO: document this function id:0 gh:9 ic:gh
 export function checkProperties (
   options: OptionsToCheck,
   pkg: Package,
