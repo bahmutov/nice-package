@@ -1,5 +1,6 @@
 'use strict'
 
+import { checkProperties } from './utils'
 import Debug from 'debug'
 const debug = Debug('@bahmutov/nice-package')
 
@@ -176,26 +177,26 @@ function makePackageNicer (grunt, validators, done, options) {
   })
 }
 
-function registerUnderTaskName (name, grunt, defaultValidators) {
-  verify.unemptyString(name, 'expected name')
-  grunt.verbose.writeln('Using', name, 'multi task')
+// function registerUnderTaskName (name, grunt, defaultValidators) {
+//   verify.unemptyString(name, 'expected name')
+//   grunt.verbose.writeln('Using', name, 'multi task')
 
-  grunt.registerMultiTask(name, taskDescription, function () {
-    // Merge custom validation functions with default ones
-    defaultValidators.fix = true
-    var options = this.options(defaultValidators)
-    var blankLine = Boolean(options.blankLine)
-    delete options.blankLine
-    var fix = Boolean(options.fix)
-    delete options.fix
+//   grunt.registerMultiTask(name, taskDescription, function () {
+//     // Merge custom validation functions with default ones
+//     defaultValidators.fix = true
+//     var options = this.options(defaultValidators)
+//     var blankLine = Boolean(options.blankLine)
+//     delete options.blankLine
+//     var fix = Boolean(options.fix)
+//     delete options.fix
 
-    var extraOptions = {
-      blankLine: blankLine,
-      fix: fix
-    }
-    makePackageNicer(grunt, options, this.async(), extraOptions)
-  })
-}
+//     var extraOptions = {
+//       blankLine: blankLine,
+//       fix: fix
+//     }
+//     makePackageNicer(grunt, options, this.async(), extraOptions)
+//   })
+// }
 
 // module.exports = function(grunt) {
 //   var defaultValidators = initValidators(grunt);
