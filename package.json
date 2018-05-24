@@ -99,7 +99,7 @@
     "snap-shot-it": "4.1.5",
     "standard": "11.0.1",
     "travis-deploy-once": "4.4.1",
-    "ts-node": "6.0.3",
+    "ts-node": "6.0.4",
     "typescript": "2.8.3"
   },
   "dependencies": {
