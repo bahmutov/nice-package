@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@types/debug": "0.0.30",
-    "@types/mocha": "5.2.5",
+    "@types/mocha": "5.2.4",
     "@types/node": "9.6.23",
     "@types/sinon": "4.3.3",
     "ban-sensitive-files": "1.9.2",
