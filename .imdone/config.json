@@ -18,10 +18,15 @@
       "IDEA",
       "NOTE",
       "REVIEW",
-      "MARK"
+      "MARK",
+      "HELP"
     ]
   },
   "lists": [
+    {
+      "name": "HELP",
+      "hidden": false
+    },
     {
       "name": "TODO",
       "hidden": false
@@ -39,5 +44,6 @@
     "id": "5ad7fc3fd0850a7039bea35b",
     "name": "bahmutov/nice-package",
     "useImdoneioForPriority": true
-  }
+  },
+  "noHelp": true
 }
