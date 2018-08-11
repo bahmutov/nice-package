@@ -1,3 +1,5 @@
+[![TODO board](https://imdone.io/api/1.0/projects/5ad7fc3fd0850a7039bea35b/badge)](https://imdone.io/app#/board/bahmutov/nice-package)
+
 # @bahmutov/nice-package
 
 > Validates and fixes properties in package.json
