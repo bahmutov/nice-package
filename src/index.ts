@@ -1,7 +1,7 @@
 'use strict'
 
-import { checkProperties } from './utils'
-import Debug from 'debug'
+import Debug from 'debug';
+import { checkProperties } from './utils';
 const debug = Debug('@bahmutov/nice-package')
 
 const PJV = require('package-json-validator').PJV
@@ -30,6 +30,7 @@ function warnOnLooseVersion (grunt, name, version) {
   }
 }
 
+// TODO do something here @amirrustam +help
 function tightenVersion (version) {
   la(check.unemptyString(version), 'expected version string, got', version)
   return version.replace('^', '').replace('~', '')
