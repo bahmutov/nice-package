@@ -30,7 +30,7 @@ function warnOnLooseVersion (grunt, name, version) {
   }
 }
 
-// TODO do something here @amirrustam +help id:8 gh:109
+// TODO do something here +help @bahmutov id:8 gh:109
 function tightenVersion (version) {
   la(check.unemptyString(version), 'expected version string, got', version)
   return version.replace('^', '').replace('~', '')
