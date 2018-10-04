@@ -81,7 +81,7 @@
     "build": "tsc"
   },
   "devDependencies": {
-    "@types/debug": "0.0.30",
+    "@types/debug": "0.0.31",
     "@types/mocha": "5.2.5",
     "@types/node": "9.6.32",
     "@types/sinon": "4.3.3",
