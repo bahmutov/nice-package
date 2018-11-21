@@ -19,7 +19,7 @@ const glob = require('glob')
 var taskName = 'nice-package'
 var taskDescription = 'Opinionated package.json validator'
 
-// TODO check if repository in package matches git remote origin +enhancement id:1 gh:11 ic:gh
+// TODO check if repository in package matches git remote origin id:1 gh:11 ic:gh +enhancement
 
 function warnOnLooseVersion (grunt, name, version) {
   la(check.unemptyString(name), 'missing name', name)
@@ -30,7 +30,7 @@ function warnOnLooseVersion (grunt, name, version) {
   }
 }
 
-// TODO do something here +help @bahmutov id:8 gh:109
+// TODO do something here id:8 gh:109 +help @bahmutov
 function tightenVersion (version) {
   la(check.unemptyString(version), 'expected version string, got', version)
   return version.replace('^', '').replace('~', '')
