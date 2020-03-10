@@ -84,7 +84,7 @@
     "@types/debug": "0.0.31",
     "@types/mocha": "5.2.7",
     "@types/node": "9.6.52",
-    "@types/sinon": "4.3.3",
+    "@types/sinon": "7.5.2",
     "ban-sensitive-files": "1.9.2",
     "dependency-check": "3.4.1",
     "deps-ok": "1.4.1",
