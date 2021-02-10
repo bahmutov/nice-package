@@ -105,7 +105,7 @@
   "dependencies": {
     "check-more-types": "2.24.0",
     "debug": "3.2.7",
-    "glob": "7.1.4",
+    "glob": "7.1.6",
     "lazy-ass": "1.6.0",
     "package-json-validator": "0.6.3"
   }
